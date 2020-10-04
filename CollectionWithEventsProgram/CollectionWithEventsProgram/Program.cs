@@ -10,6 +10,7 @@ namespace CollectionWithEventsProgram
 {
     class Program
     {
+        static SinglyLinkedList<int> DeletedItems = new SinglyLinkedList<int>();
         static void Main(string[] args)
         {
            bool a = Compare<int>.RhsIsGreater(15, 20);
@@ -18,6 +19,7 @@ namespace CollectionWithEventsProgram
             SinglyLinkedList<int> TestList = new SinglyLinkedList<int>();
             SinglyLinkedList<int> TestList2 = new SinglyLinkedList<int>();
 
+            TestList.Event += SinglyLinkedList_Event;
 
             TestList.AddItem(6);
             TestList.AddItem(7);
@@ -39,8 +41,25 @@ namespace CollectionWithEventsProgram
 
             TestList.SortList(Compare<int>.RhsIsGreater);
 
+            for (int i = 0; i < DeletedItems.Size; i++)
+                Console.WriteLine(DeletedItems[i].ToString());
+
             Console.ReadLine();
 
         }
+
+        static void SinglyLinkedList_Event(object sender, OnDeleteArgs<int> e)
+        {
+            switch (e.Message)
+            {
+                case "Remove":
+                    {
+                        Console.WriteLine("Event remove for SinglyLinkedList");
+                        DeletedItems.AddItem(e.Item);
+                    }
+                    break;
+            }
+        }
     }
+
 }

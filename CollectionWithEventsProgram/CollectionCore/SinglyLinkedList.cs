@@ -8,6 +8,7 @@ using CompareDelegateCore;
 
 namespace CollectionCore
 {
+    public delegate void OnDeleteEventHandler<T>(object sender, OnDeleteArgs<T> e);
     public class SinglyLinkedList<T> : IEnumerable<T>
     {
         Node<T> head;
@@ -16,6 +17,8 @@ namespace CollectionCore
         private static int arraySize = 2;
 
         private T[] ListArray = new T[arraySize];
+
+        public event OnDeleteEventHandler<T> Event;
 
         public int Size
         {
@@ -89,17 +92,19 @@ namespace CollectionCore
 
                 previousValue = copyOfHeadNode;
                 copyOfHeadNode = copyOfHeadNode.NextValue;
+
+                OnEvent("Remove", item);
             }
         }
 
         public void SortList(CompareDelegate<T> Delegate)
         {
-            for(int i = 0; i<size; i++)
+            for (int i = 0; i < size; i++)
             {
-                for(int j = 0; j < size; j++)
+                for (int j = 0; j < size; j++)
                 {
 
-                    if(Delegate(this[i], this[j]))
+                    if (Delegate(this[i], this[j]))
                     {
                         T temp = this[i];
                         this[i] = this[j];
@@ -172,7 +177,7 @@ namespace CollectionCore
             }
         }
 
-        public void Except(SinglyLinkedList<T> secondList) 
+        public void Except(SinglyLinkedList<T> secondList)
         {
             Node<T> copyOfHeadNode = head;
 
@@ -182,7 +187,7 @@ namespace CollectionCore
             {
                 foreach (T item in secondList)
                 {
-                    if(copyOfHeadNode.Value.Equals(item))
+                    if (copyOfHeadNode.Value.Equals(item))
                     {
                         isntInCustList = true;
                         break;
@@ -217,5 +222,27 @@ namespace CollectionCore
                 current = current.NextValue;
             }
         }
+        private void OnEvent(string message, T item)
+        {
+            if (Event != null)
+            {
+                var eventArgs = new OnDeleteArgs<T>(message, item);
+                Event.Invoke(this, eventArgs);
+            }
+
+        }
+    }
+
+    public class OnDeleteArgs<T> : EventArgs
+    {
+        public OnDeleteArgs(string message, T item)
+        {
+            Message = message;
+            Item = item;
+        }
+
+        public string Message { get; private set; }
+        public T Item { get; private set; }
+
     }
 }
