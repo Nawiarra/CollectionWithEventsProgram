@@ -45,5 +45,11 @@
     <Compile Include="SinglyLinkedList.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CompareDelegateCore\CompareDelegateCore.csproj">
+      <Project>{63f6cd0f-6ce6-4cb4-a841-93b98efbb7ce}</Project>
+      <Name>CompareDelegateCore</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

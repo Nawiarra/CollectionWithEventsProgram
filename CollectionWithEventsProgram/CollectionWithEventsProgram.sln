@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionWithEventsProgram
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CollectionCore", "CollectionCore\CollectionCore.csproj", "{5982A189-67B3-40DD-8D37-3890C3387A8A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompareDelegateCore", "CompareDelegateCore\CompareDelegateCore.csproj", "{63F6CD0F-6CE6-4CB4-A841-93B98EFBB7CE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{5982A189-67B3-40DD-8D37-3890C3387A8A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5982A189-67B3-40DD-8D37-3890C3387A8A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5982A189-67B3-40DD-8D37-3890C3387A8A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63F6CD0F-6CE6-4CB4-A841-93B98EFBB7CE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63F6CD0F-6CE6-4CB4-A841-93B98EFBB7CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63F6CD0F-6CE6-4CB4-A841-93B98EFBB7CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63F6CD0F-6CE6-4CB4-A841-93B98EFBB7CE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

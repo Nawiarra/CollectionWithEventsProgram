@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CompareDelegateCore;
 
 namespace CollectionCore
 {
@@ -88,6 +89,23 @@ namespace CollectionCore
 
                 previousValue = copyOfHeadNode;
                 copyOfHeadNode = copyOfHeadNode.NextValue;
+            }
+        }
+
+        public void SortList(CompareDelegate<T> Delegate)
+        {
+            for(int i = 0; i<size; i++)
+            {
+                for(int j = 0; j < size; j++)
+                {
+
+                    if(Delegate(this[i], this[j]))
+                    {
+                        T temp = this[i];
+                        this[i] = this[j];
+                        this[j] = temp;
+                    }
+                }
             }
         }
 
