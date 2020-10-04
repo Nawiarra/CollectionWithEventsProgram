@@ -13,13 +13,13 @@ namespace CollectionWithEventsProgram
         static SinglyLinkedList<int> DeletedItems = new SinglyLinkedList<int>();
         static void Main(string[] args)
         {
-           bool a = Compare<int>.RhsIsGreater(15, 20);
-            
+            bool a = Compare<int>.RhsIsGreater(15, 20);
+
 
             SinglyLinkedList<int> TestList = new SinglyLinkedList<int>();
             SinglyLinkedList<int> TestList2 = new SinglyLinkedList<int>();
 
-            TestList.Event += SinglyLinkedList_Event;
+            TestList2.Event += SinglyLinkedList_Event;
 
             TestList.AddItem(6);
             TestList.AddItem(7);
@@ -54,8 +54,10 @@ namespace CollectionWithEventsProgram
             {
                 case "Remove":
                     {
-                        Console.WriteLine("Event remove for SinglyLinkedList");
-                        DeletedItems.AddItem(e.Item);
+                        if (!DeletedItems.Contains(e.Item))
+                        {
+                            DeletedItems.AddItem(e.Item);
+                        }
                     }
                     break;
             }
