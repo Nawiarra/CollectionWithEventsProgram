@@ -19,7 +19,17 @@ namespace CollectionWithEventsProgram
             SinglyLinkedList<int> TestList = new SinglyLinkedList<int>();
             SinglyLinkedList<int> TestList2 = new SinglyLinkedList<int>();
 
-            TestList2.Event += SinglyLinkedList_Event;
+            SinglyLinkedList<int> TestList3 = new SinglyLinkedList<int>();
+
+            TestList2.Event += delegate(object sender, OnDeleteArgs<int> e)
+            {
+                if (!TestList3.Contains(e.Item))
+                {
+                    TestList3.AddItem(e.Item);
+                }
+                
+            };
+                //SinglyLinkedList_Event;
 
             TestList.AddItem(6);
             TestList.AddItem(7);
